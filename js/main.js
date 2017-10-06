@@ -15,46 +15,52 @@ ctx.fillRect(0,0,canvas.width, canvas.height);*/
 ctx.fillStyle = 'rgb(0,0,255)';
 ctx.fillRect((canvas.width/2)-h,(canvas.height/2)-h,2*h,2*  h);
 
-t+=.01;
+t+=.05;
 for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
 	for (var y = (canvas.height/2)-h; y < (canvas.height/2)+h; y++) {
 		var value = noise.simplex3(x / 100, y / 100,t);
 		var r;
 		var g;
 		var b;
-      //console.log(value);
-      if(value<.3){
+      if(value<.1){
+      	r = 0;
+      	g = 0;
+      	b = 150;
+      }
+      else if(value<.4){
       	//ctx.strokeStyle  = "rgb(0,0,255)";
       	r = 0;
       	g = 0;
       	b = 255;
       }
-      else if(value<.4){
+      else if(value<.5){
       	//ctx.strokeStyle = "rgb(255,255,0)"
-      	r = 255;
-      	g = 255;
+      	r = 637*value;
+      	g = 637*value;
       	b = 0;
-      }else if(value<.7){
+      }/*else if(value<.7){
       	//ctx.strokeStyle = "rgb(0,255,0)";	
       	r = 0;
       	g = 255;
+      	//.7x = 255
       	b = 0;
-      }else if(value<.9){
+      }*/else if(value<.8){
       	//ctx.strokeStyle = "rgb(0,150,0)";
       	r = 0;
-      	g = 150;
+      	g = 364*value;
       	b = 0;
       }else{
       	//ctx.strokeStyle = "rgb(175,175,175)"
-      	r = 175;
-      	g = 175;
-      	b = 175;
+      	r = 225*value;
+      	g = 225*value;
+      	b = 225*value;
       }
       d[0]   = r;
       d[1]   = g;
       d[2]   = b;
       d[3]   = 255;
       ctx.putImageData( id, x, y ); 
+     // ctx.putImageData(id,x+1,y)
     	/*ctx.beginPath();
     	ctx.arc(x,y,Math.abs(value)*3,0,Math.PI*2);
     	ctx.stroke();*/
