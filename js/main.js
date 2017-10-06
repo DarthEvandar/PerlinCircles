@@ -27,13 +27,13 @@ for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
       	g = 0;
       	b = 150;
       }
-      else if(value<.4){
+      else if(value<.5){
       	//ctx.strokeStyle  = "rgb(0,0,255)";
       	r = 0;
       	g = 0;
       	b = 255;
       }
-      else if(value<.5){
+      else if(value<.6){
       	//ctx.strokeStyle = "rgb(255,255,0)"
       	r = 637*value;
       	g = 637*value;
@@ -47,13 +47,13 @@ for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
       }*/else if(value<.8){
       	//ctx.strokeStyle = "rgb(0,150,0)";
       	r = 0;
-      	g = 364*value;
+      	g = 450-(318*value);
       	b = 0;
       }else{
       	//ctx.strokeStyle = "rgb(175,175,175)"
-      	r = 225*value;
-      	g = 225*value;
-      	b = 225*value;
+      	r = 0;
+      	g = 200;
+      	b = 0;
       }
       d[0]   = r;
       d[1]   = g;
