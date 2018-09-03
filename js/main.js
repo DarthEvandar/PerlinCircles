@@ -1,21 +1,18 @@
-alert("Disable Hardware Acceleration to make this run smoothly")
 t=0;
-h=200;
+h=100;
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 noise.seed(Math.random());
 var id = ctx.createImageData(1,1); // only do this once per page
-var d  = id.data;  
+var d  = id.data;
 function animate(){
-
-
-/*  ctx.fillStyle = 'rgb(255,255,255)';
-ctx.fillRect(0,0,canvas.width, canvas.height);*/
-ctx.fillStyle = 'rgb(0,0,255)';
-ctx.fillRect((canvas.width/2)-h,(canvas.height/2)-h,2*h,2*  h);
-
+ctx.fillStyle = 'rgb(255,255,255)';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+//ctx.fillStyle = 'rgb(0,0,255)';
+//ctx.fillRect((canvas.width/2)-h,(canvas.height/2)-h,2*h,2*  h);
+/*
 t+=.05;
 for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
 	for (var y = (canvas.height/2)-h; y < (canvas.height/2)+h; y++) {
@@ -53,8 +50,9 @@ for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
       ctx.putImageData( id, x, y ); 
     }
 }
-
-   /* t+=.001;
+*/
+/*
+    t+=.001;
     for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
       for (var y = (canvas.height/2)-h; y < (canvas.height/2)+h; y++) {
         var value = noise.simplex2(x / 100, y / 100);
@@ -75,8 +73,9 @@ for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
         ctx.arc(x,y,Math.abs(value)*5*t,0,Math.PI*2);
         ctx.stroke();
        }
-   }*/
-/*	ctx.fillRect(0,0,canvas.width,canvas.height);
+   }
+   */
+  ctx.fillRect(0,0,canvas.width,canvas.height);
   t+=0.01;
   for (var x = 0; x < canvas.width; x+=canvas.width/h) {
   		for (var y = 0; y < canvas.height; y+=canvas.width/h) {
@@ -84,24 +83,14 @@ for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
 
        ctx.beginPath();
     	 var value = Math.abs(noise.simplex3(x / 100, y / 100,t));
-    	 if(value<.2){
-        ctx.strokeStyle  = "rgb(0,0,255)";
-        
-      }
-      else if(value<.3){
-        ctx.strokeStyle = "rgb(255,255,0)"
-      
-      }else if(value<.7){
-        ctx.strokeStyle = "rgb(0,255,0)";
-      }else{
-      	ctx.strokeStyle = "rgb(0,150,0)";
-      }
+    	 
     	 ctx.arc(x,y,Math.abs(value)*10,0,Math.PI*2);
     	 ctx.stroke();
   		}
-  	}*/
+  	}
   //ctx.fillRect(0,0,canvas.width,canvas.height);
-  /*t+=0.1;
+  /*
+  t+=0.1;
   for (var x = 0; x < 400; x++) {
   		for (var y = 0; y < 400; y++) {
 		var value = noise.simplex3(x / 100, y / 100,t);
@@ -121,7 +110,8 @@ for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
     ctx.stroke();
   		}
   	}*/
-  /*t+=0.1;
+	/*
+  t+=0.1;
   for (var x = 0; x < canvas.width; x++) {
       for (var y = 0; y < canvas.height; y++) {
       ctx.beginPath();
@@ -130,19 +120,6 @@ for (var x = (canvas.width/2)-h; x < (canvas.width/2)+h; x++) {
       ctx.stroke();
       }
   }*/
-  /*if(t>2){
-    end();
-    return;
-  }
-  encoder.addFrame(ctx);*/
   requestAnimationFrame(animate);
 }
-function end(){
-	encoder.finish();
-	encoder.download("download.gif");
-}
-/*var encoder = new GIFEncoder();
-encoder.setRepeat(0);
-encoder.setDelay(1);
-encoder.start();*/
 animate();
